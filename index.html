@@ -1,0 +1,685 @@
+<!-- Develop following pages of an online Book store. The
+    website should consist the following pages.
+    • Home page
+    • Registration and user Login
+    • User profile page
+    • Books catalog Shopping cart
+    • Payment by credit card Order Conformation -->
+
+
+<html>
+<head>
+    <title>Book Store</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.theme.default.min.css">
+
+    <style>
+        @media (min-width: 992px) {
+            .col-md-3 {
+                margin-top: 1%;
+            }
+        }
+
+        :root {
+            --main-header-bg: #232f3e;
+            --second-header-bg: #131921;
+            --main-border: #ff9000;
+            --main-border-shadow: #febd69;
+            --main-text: #f3a847;
+            --second-text: white;
+            --main-search-opt: #cdcdcd;
+            --second-search-opt: #f3f3f3;
+            --border-radius: 0.2rem;
+            background: black;
+        }
+
+        .cat-title {
+            background-color: black;
+            color: white;
+            padding-left: 15px;
+        }
+        .cat-title h1{
+            padding-top:5px;
+            padding-bottom:5px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        header {
+            background: var(--main-header-bg);
+            height: 4rem;
+            font-size: 1rem !important;
+            display: flex;
+        }
+
+        #nav-bar {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-around;
+            flex: 1;
+        }
+
+        #nav-belt {
+            display: flex;
+            height: 3.5rem;
+            width: 100%;
+            background: var(--second-header-bg);
+        }
+
+        #nav-belt>.nav-left {
+            box-sizing: border-box !important;
+            display: flex;
+        }
+
+        #nav-logo {
+            box-sizing: border-box;
+            display: flex;
+            padding: 0.5rem 0 0.5rem 0.5rem;
+        }
+
+        #nav-logo>a {
+            box-sizing: content-box;
+            display: flex;
+            align-items: center;
+            padding: 0 0.5rem 0 0.5rem;
+            margin: 0.1rem;
+        }
+
+        #nav-logo>a:hover {
+            border: 0.1rem solid var(--main-border);
+            border-radius: var(--border-radius);
+            margin: 0;
+            color: var(--main-text);
+            box-shadow: 0rem 0rem 0.3rem var(--main-border-shadow);
+        }
+
+        #nav-belt>.nav-fill {
+            box-sizing: border-box;
+            display: flex;
+            flex: 1 1 auto;
+            flex-wrap: wrap;
+        }
+
+        #nav-search {
+            box-sizing: border-box;
+            width: auto;
+            display: flex;
+            flex: 1 1 auto;
+            padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+            overflow: hidden;
+        }
+
+        #nav-search-bar-form {
+            box-sizing: border-box;
+            display: flex;
+            flex: 1 1 auto;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        #nav-search-bar-form:focus-within {
+            box-sizing: border-box;
+            border: 0.2rem solid var(--main-border);
+            margin: 0 -0.2rem 0 -0.2rem;
+            box-shadow: 0rem 0rem 0.3rem var(--main-border-shadow);
+        }
+
+        #nav-search-bar-form .nav-left {
+            box-sizing: border-box;
+            display: flex;
+            background: var(--second-search-opt);
+            align-items: center;
+        }
+
+        #nav-search-bar-form .nav-left a {
+            display: flex;
+            color: black;
+            padding: 0 0.5rem 0 0.5rem;
+            flex: 1 1 auto;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+        }
+
+        #nav-search-bar-form .nav-left a:hover {
+            background: var(--main-search-opt);
+        }
+
+        #nav-search-bar-form .nav-fill {
+            box-sizing: border-box;
+            display: flex;
+            flex: 1 1 auto;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            background: white;
+            border-left: 0.1rem solid var(--main-search-opt);
+            border-right: 0.1rem solid var(--main-text);
+        }
+
+        #nav-search-bar-form .nav-fill input {
+            box-sizing: border-box;
+            flex: 1 1 auto;
+            padding: 0;
+            font-size: 1rem;
+            text-indent: 0.5rem;
+            border: 0;
+        }
+
+        #nav-search-bar-form .nav-fill>input:focus {
+            outline: none;
+        }
+
+        #nav-search-bar-form .nav-right {
+            box-sizing: border-box;
+            display: flex;
+            background: var(--main-border-shadow);
+            align-items: center;
+        }
+
+        #nav-search-bar-form .nav-right>button {
+            display: flex;
+            flex: 1 1 auto;
+            align-items: center;
+            border: 0;
+            background: var(--main-border-shadow);
+            width: 100%;
+            height: 100%;
+            padding: 0.5rem 3.5rem 0.5rem 3.5rem;
+            cursor: pointer;
+        }
+
+        #nav-search-bar-form .nav-right>button:hover {
+            background: var(--main-text);
+        }
+
+        #nav-belt>.nav-right {
+            box-sizing: border-box;
+            display: flex;
+        }
+
+        #nav-tools {
+            display: flex;
+            flex: 1 1 auto;
+            padding: 0.5rem 0.5rem 0.5rem 0;
+        }
+
+        #nav-tools>a {
+            box-sizing: border-box;
+            display: flex;
+            flex: 1 1 auto;
+            align-items: center;
+            padding: 0 0.5rem 0 0.5rem;
+            margin: 0.1rem;
+        }
+
+        #nav-tools>a:hover {
+            border: 0.1rem solid var(--main-border);
+            border-radius: var(--border-radius);
+            margin: 0;
+            color: var(--main-text);
+            box-shadow: 0rem 0rem 0.3rem var(--main-border-shadow);
+        }
+
+        .footer {
+            margin-top: 4%;
+            background: black;
+            height: 4rem;
+            font-size: 1rem !important;
+            display: flex;
+        }
+
+        #sync1 .item {
+            background: #0c83e7;
+            margin: 5px;
+            width: 100%;
+            height: auto;
+            color: #fff;
+            border-radius: 3px;
+            text-align: center;
+        }
+
+        #sync2 .item {
+            background: #c9c9c9;
+            padding: 10px 0px;
+            margin: 5px;
+            color: #fff;
+            border-radius: 3px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #sync2 .item h1 {
+            font-size: 18px;
+        }
+
+        #sync2 .current .item {
+            background: #0c83e7;
+        }
+
+        */ .owl-theme .owl-nav [class*="owl-"] {
+            transition: all 0.3s ease;
+        }
+
+        .owl-theme .owl-nav [class*="owl-"].disabled:hover {
+            background-color: #d6d6d6;
+        }
+
+        #sync1.owl-theme {
+            position: relative;
+        }
+
+        #sync1.owl-theme .owl-next,
+        #sync1.owl-theme .owl-prev {
+            width: 22px;
+            height: 40px;
+            margin-top: -20px;
+            position: absolute;
+            top: 50%;
+        }
+
+        #sync1.owl-theme .owl-prev {
+            left: 10px;
+        }
+
+        #sync1.owl-theme .owl-next {
+            right: 10px;
+        }
+    </style>
+</head>
+
+ <!-- __    __    _     ___    __    _          _      __   _____  _     _  
+( (`  / /\  | | | | |_)  / /\  \ \  /     | |_|  / /\   | |  | |_| | | 
+_)_) /_/--\ \_\_/ |_| \ /_/--\  \_\/      |_| | /_/--\  |_|  |_| | |_|  -->
+
+<body>
+
+    <header id="container">
+        <div id="nav-bar">
+            <div id="nav-belt">
+                <div class="nav-left">
+                    <div id="nav-logo">
+                        <a href="#">The Book Spot</a>
+                    </div>
+                </div>
+                <div class="nav-fill">
+                    <div id="nav-search">
+                        <form id="nav-search-bar-form">
+                            <div class="nav-left">
+                                <a href="">ALL</a>
+                            </div>
+                            <div class="nav-fill">
+                                <input type="text">
+                            </div>
+                            <div class="nav-right">
+                                <button type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <div id="nav-tools">
+                        <a href="login.html">Log In</a>
+                        <a href="registration.html">Registration</a>
+                        <a href="bookscatalogshoppingcart.html">Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- crousel slider -->
+    <div id="sync1" class="owl-carousel owl-theme">
+        <div class="item">
+            <img src="https://d2g9wbak88g7ch.cloudfront.net/bannerimages/57_inr.png" height="280" width="803"></img>
+        </div>
+        <div class="item">
+            <img src="https://d2g9wbak88g7ch.cloudfront.net/bannerimages/63_inr.png" height="280" width="803"></img>
+        </div>
+        <div class="item">
+            <img src="https://d2g9wbak88g7ch.cloudfront.net/bannerimages/56_inr.png" height="280" width="803"></img>
+        </div>
+        <div class="item">
+            <img src="https://d2g9wbak88g7ch.cloudfront.net/bannerimages/59_inr.png" height="280" width="803"></img>
+        </div>
+
+    </div>
+
+    <div id="sync2" class="owl-carousel owl-theme">
+
+    </div>
+    <!-- flex books store card 
+        category:
+        bestseller
+        new arrival
+        latest collection
+    -->
+    <div class="container">
+        <div class="row">
+            <div class="cat-title">
+                <h1>Bestseller</h1>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="images/book1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Harry Potter</h5>
+                        <p class="card-text">
+                            <span class="badge badge-primary">Rs. 300</span>
+                            <span class="badge badge-success">4.5</span>
+                        </p>
+                        <button class="btn btn-primary">Add to cart</button>
+                        <button class="btn btn-success"><a href="paymentMethod.html" >Byu Now</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="images/book3.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Lincoln's Mentors</h5>
+                        <p class="card-text">
+                            <span class="badge badge-primary">Rs. 300</span>
+                            <span class="badge badge-success">4.5</span>
+                        </p>
+                        <button class="btn btn-primary">Add to cart</button>
+                        <button class="btn btn-success"><a href="paymentMethod.html" >Byu Now</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="images/book2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">The Overweight Mind and Body</h5>
+                        <p class="card-text">
+                            <span class="badge badge-primary">Rs. 300</span>
+                            <span class="badge badge-success">4.5</span>
+                        </p>
+                        <button class="btn btn-primary">Add to cart</button>
+                        <button class="btn btn-success"><a href="paymentMethod.html" >Byu Now</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="images/book1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Harry Potter</h5>
+                        <p class="card-text">
+                            <span class="badge badge-primary">Rs. 300</span>
+                            <span class="badge badge-success">4.5</span>
+                        </p>
+                        <button class="btn btn-primary">Add to cart</button>
+                        <button class="btn btn-success"><a href="paymentMethod.html" >Byu Now</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="cat-title">
+                <h1>New Arrival</h1>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="images/book3.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Lincoln's Mentors</h5>
+                        <p class="card-text">
+                            <span class="badge badge-primary">Rs. 300</span>
+                            <span class="badge badge-success">4.5</span>
+                        </p>
+                        <button class="btn btn-primary">Add to cart</button>
+                        <button class="btn btn-success"><a href="paymentMethod.html" >Byu Now</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="images/book2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">The Overweight Mind and Body</h5>
+                        <p class="card-text">
+                            <span class="badge badge-primary">Rs. 300</span>
+                            <span class="badge badge-success">4.5</span>
+                        </p>
+                        <button class="btn btn-primary">Add to cart</button>
+                        <button class="btn btn-success"><a href="paymentMethod.html" >Byu Now</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="images/book1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Harry Potter</h5>
+                        <p class="card-text">
+                            <span class="badge badge-primary">Rs. 300</span>
+                            <span class="badge badge-success">4.5</span>
+                        </p>
+                        <button class="btn btn-primary">Add to cart</button>
+                        <button class="btn btn-success"><a href="paymentMethod.html" >Byu Now</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="images/book3.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Lincoln's Mentors</h5>
+                        <p class="card-text">
+                            <span class="badge badge-primary">Rs. 300</span>
+                            <span class="badge badge-success">4.5</span>
+                        </p>
+                        <button class="btn btn-primary">Add to cart</button>
+                        <button class="btn btn-success"><a href="paymentMethod.html" >Byu Now</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cat-title">
+                <h1>Latest Collection</h1>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="images/book2.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">The Overweight Mind and Body</h5>
+                        <p class="card-text">
+                            <span class="badge badge-primary">Rs. 300</span>
+                            <span class="badge badge-success">4.5</span>
+                        </p>
+                        <button class="btn btn-primary">Add to cart</button>
+                        <button class="btn btn-success"><a href="paymentMethod.html" >Byu Now</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="images/book1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Harry Potter</h5>
+                        <p class="card-text">
+                            <span class="badge badge-primary">Rs. 300</span>
+                            <span class="badge badge-success">4.5</span>
+                        </p>
+                        <button class="btn btn-primary">Add to cart</button>
+                        <button class="btn btn-success"><a href="paymentMethod.html" >Byu Now</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="images/book3.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Lincoln's Mentors</h5>
+                        <p class="card-text">
+                            <span class="badge badge-primary">Rs. 300</span>
+                            <span class="badge badge-success">4.5</span>
+                        </p>
+                        <button class="btn btn-primary">Add to cart</button>
+                        <button class="btn btn-success"><a href="paymentMethod.html" >Byu Now</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="images/book1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Harry Potter</h5>
+                        <p class="card-text">
+                            <span class="badge badge-primary">Rs. 300</span>
+                            <span class="badge badge-success">4.5</span>
+                        </p>
+                        <button class="btn btn-primary">Add to cart</button>
+                        <button class="btn btn-success"><a href="paymentMethod.html" >Byu Now</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- Responsive footer -->
+    <footer class="footer" style="color:white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>About Us</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Quisquam, quos.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Contact Us</h3>
+                    <p>
+                        <i class="fa fa-phone"></i>
+                        <span>+91 9876543210</span>
+                    </p>
+                    <p>
+                        <i class="fa fa-envelope"></i>
+                        <span>
+                            <a href="mailto:">
+                                Support
+                            </a>
+                        </span>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Subscribe</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Quisquam, quos.
+                    </p>
+                    <form action="">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Email">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+
+    <script>
+        $(document).ready(function () {
+
+            var sync1 = $("#sync1");
+            var sync2 = $("#sync2");
+            var slidesPerPage = 4; //globaly define number of elements per page
+            var syncedSecondary = true;
+
+            sync1.owlCarousel({
+                items: 1,
+                slideSpeed: 2000,
+                nav: true,
+                autoplay: true,
+                dots: true,
+                loop: true,
+                responsiveRefreshRate: 200,
+                navText: ['<svg width="100%" height="100%" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>', '<svg width="100%" height="100%" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>'],
+            }).on('changed.owl.carousel', syncPosition);
+
+            sync2
+                .on('initialized.owl.carousel', function () {
+                    sync2.find(".owl-item").eq(0).addClass("current");
+                })
+                .owlCarousel({
+                    items: slidesPerPage,
+                    dots: true,
+                    nav: true,
+                    smartSpeed: 200,
+                    slideSpeed: 500,
+                    slideBy: slidesPerPage, //alternatively you can slide by 1, this way the active slide will stick to the first item in the second carousel
+                    responsiveRefreshRate: 100
+                }).on('changed.owl.carousel', syncPosition2);
+
+            function syncPosition(el) {
+                //if you set loop to false, you have to restore this next line
+                //var current = el.item.index;
+
+                //if you disable loop you have to comment this block
+                var count = el.item.count - 1;
+                var current = Math.round(el.item.index - (el.item.count / 2) - .5);
+
+                if (current < 0) {
+                    current = count;
+                }
+                if (current > count) {
+                    current = 0;
+                }
+
+                //end block
+
+                sync2
+                    .find(".owl-item")
+                    .removeClass("current")
+                    .eq(current)
+                    .addClass("current");
+                var onscreen = sync2.find('.owl-item.active').length - 1;
+                var start = sync2.find('.owl-item.active').first().index();
+                var end = sync2.find('.owl-item.active').last().index();
+
+                if (current > end) {
+                    sync2.data('owl.carousel').to(current, 100, true);
+                }
+                if (current < start) {
+                    sync2.data('owl.carousel').to(current - onscreen, 100, true);
+                }
+            }
+
+            function syncPosition2(el) {
+                if (syncedSecondary) {
+                    var number = el.item.index;
+                    sync1.data('owl.carousel').to(number, 100, true);
+                }
+            }
+
+            sync2.on("click", ".owl-item", function (e) {
+                e.preventDefault();
+                var number = $(this).index();
+                sync1.data('owl.carousel').to(number, 300, true);
+            });
+        });
+    </script>
+</body>
+
+</html>

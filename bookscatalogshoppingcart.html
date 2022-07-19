@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+</head>
+ <!-- __    __    _     ___    __    _          _      __   _____  _     _  
+( (`  / /\  | | | | |_)  / /\  \ \  /     | |_|  / /\   | |  | |_| | | 
+_)_) /_/--\ \_\_/ |_| \ /_/--\  \_\/      |_| | /_/--\  |_|  |_| | |_|  -->
+<style>
+    * {
+  box-sizing: border-box;
+}
+ 
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.shopping-cart {
+  width: 100%;
+  height: 624px;
+  margin: 40px auto;
+  background: #FFFFFF;
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+  border-radius: 6px;
+ 
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  height: 60px;
+  border-bottom: 1px solid #E1E8EE;
+  padding: 20px 30px;
+  color: #5E6977;
+  font-size: 18px;
+  font-weight: 400;
+}
+ 
+.item {
+  padding: 20px 30px;
+  height: 292px;
+  display: flex;
+}
+ 
+.item:nth-child(3) {
+  border-top:  1px solid #E1E8EE;
+  border-bottom:  1px solid #E1E8EE;
+}
+
+.buttons {
+  position: relative;
+  padding-top: 30px;
+  margin-right: 60px;
+}
+.delete-btn,
+.like-btn {
+  display: inline-block;
+  Cursor: pointer;
+}
+.delete-btn {
+  width: 18px;
+  height: 17px;
+  background: url(&amp;quot;delete-icn.svg&amp;quot;) no-repeat center;
+}
+ 
+.like-btn {
+  position: absolute;
+  top: 9px;
+  left: 15px;
+  background: url('twitter-heart.png');
+  width: 60px;
+  height: 60px;
+  background-size: 2900%;
+  background-repeat: no-repeat;
+}
+
+.is-active {
+  animation-name: animate;
+  animation-duration: .8s;
+  animation-iteration-count: 1;
+  animation-timing-function: steps(28);
+  animation-fill-mode: forwards;
+}
+ 
+@keyframes animate {
+  0%   { background-position: left;  }
+  50%  { background-position: right; }
+  100% { background-position: right; }
+}
+
+.image {
+  margin-right: 50px;
+}
+ 
+.description {
+  padding-top: 10px;
+  margin-right: 60px;
+  width: 115px;
+}
+ 
+.description span {
+  display: block;
+  font-size: 14px;
+  color: #43484D;
+  font-weight: 400;
+}
+ 
+.description span:first-child {
+  margin-bottom: 5px;
+}
+.description span:last-child {
+  font-weight: 300;
+  margin-top: 8px;
+  color: #86939E;
+}
+
+
+.quantity {
+  padding-top: 20px;
+  margin-right: 60px;
+}
+.quantity input {
+  -webkit-appearance: none;
+  border: none;
+  text-align: center;
+  width: 32px;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+}
+ 
+button[class*=btn] {
+  width: 30px;
+  height: 30px;
+  background-color: #E1E8EE;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+.minus-btn img {
+  margin-bottom: 3px;
+}
+.plus-btn img {
+  margin-top: 2px;
+}
+ 
+button:focus,
+input:focus {
+  outline:0;
+}
+
+.total-price {
+  width: 83px;
+  padding-top: 27px;
+  text-align: center;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+}
+
+@media (max-width: 800px) {
+  .shopping-cart {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+  .item {
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .image img {
+    width: 50%;
+  }
+  .image,
+  .quantity,
+  .description {
+    width: 100%;
+    text-align: center;
+    margin: 6px 0;
+  }
+  .buttons {
+    margin-right: 20px;
+  }
+}
+
+:root {
+            --main-header-bg: #232f3e;
+            --second-header-bg: #131921;
+            --main-border: #ff9000;
+            --main-border-shadow: #febd69;
+            --main-text: #f3a847;
+            --second-text: white;
+            --main-search-opt: #cdcdcd;
+            --second-search-opt: #f3f3f3;
+            --border-radius: 0.2rem;
+            background: black;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        header {
+            background: var(--main-header-bg);
+            height: 4rem;
+            font-size: 1rem !important;
+            display: flex;
+        }
+
+        #nav-bar {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-around;
+            flex: 1;
+        }
+
+        #nav-belt {
+            display: flex;
+            height: 3.5rem;
+            width: 100%;
+            background: var(--second-header-bg);
+        }
+
+        #nav-belt>.nav-left {
+            box-sizing: border-box !important;
+            display: flex;
+        }
+
+        #nav-logo {
+            box-sizing: border-box;
+            display: flex;
+            padding: 0.5rem 0 0.5rem 0.5rem;
+        }
+
+        #nav-logo>a {
+            box-sizing: content-box;
+            display: flex;
+            align-items: center;
+            padding: 0 0.5rem 0 0.5rem;
+            margin: 0.1rem;
+        }
+
+        #nav-logo>a:hover {
+            border: 0.1rem solid var(--main-border);
+            border-radius: var(--border-radius);
+            margin: 0;
+            color: var(--main-text);
+            box-shadow: 0rem 0rem 0.3rem var(--main-border-shadow);
+        }
+
+        #nav-belt>.nav-fill {
+            box-sizing: border-box;
+            display: flex;
+            flex: 1 1 auto;
+            flex-wrap: wrap;
+        }
+
+        #nav-search {
+            box-sizing: border-box;
+            width: auto;
+            display: flex;
+            flex: 1 1 auto;
+            padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+            overflow: hidden;
+        }
+
+        #nav-search-bar-form {
+            box-sizing: border-box;
+            display: flex;
+            flex: 1 1 auto;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        #nav-search-bar-form:focus-within {
+            box-sizing: border-box;
+            border: 0.2rem solid var(--main-border);
+            margin: 0 -0.2rem 0 -0.2rem;
+            box-shadow: 0rem 0rem 0.3rem var(--main-border-shadow);
+        }
+
+        #nav-search-bar-form .nav-left {
+            box-sizing: border-box;
+            display: flex;
+            background: var(--second-search-opt);
+            align-items: center;
+        }
+
+        #nav-search-bar-form .nav-left a {
+            display: flex;
+            color: black;
+            padding: 0 0.5rem 0 0.5rem;
+            flex: 1 1 auto;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+        }
+
+        #nav-search-bar-form .nav-left a:hover {
+            background: var(--main-search-opt);
+        }
+
+        #nav-search-bar-form .nav-fill {
+            box-sizing: border-box;
+            display: flex;
+            flex: 1 1 auto;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            background: white;
+            border-left: 0.1rem solid var(--main-search-opt);
+            border-right: 0.1rem solid var(--main-text);
+        }
+
+        #nav-search-bar-form .nav-fill input {
+            box-sizing: border-box;
+            flex: 1 1 auto;
+            padding: 0;
+            font-size: 1rem;
+            text-indent: 0.5rem;
+            border: 0;
+        }
+
+        #nav-search-bar-form .nav-fill>input:focus {
+            outline: none;
+        }
+
+        #nav-search-bar-form .nav-right {
+            box-sizing: border-box;
+            display: flex;
+            background: var(--main-border-shadow);
+            align-items: center;
+        }
+
+        #nav-search-bar-form .nav-right>button {
+            display: flex;
+            flex: 1 1 auto;
+            align-items: center;
+            border: 0;
+            background: var(--main-border-shadow);
+            width: 100%;
+            height: 100%;
+            padding: 0.5rem 3.5rem 0.5rem 3.5rem;
+            cursor: pointer;
+        }
+
+        #nav-search-bar-form .nav-right>button:hover {
+            background: var(--main-text);
+        }
+
+        #nav-belt>.nav-right {
+            box-sizing: border-box;
+            display: flex;
+        }
+
+        #nav-tools {
+            display: flex;
+            flex: 1 1 auto;
+            padding: 0.5rem 0.5rem 0.5rem 0;
+        }
+
+        #nav-tools>a {
+            box-sizing: border-box;
+            display: flex;
+            flex: 1 1 auto;
+            align-items: center;
+            padding: 0 0.5rem 0 0.5rem;
+            margin: 0.1rem;
+        }
+
+        #nav-tools>a:hover {
+            border: 0.1rem solid var(--main-border);
+            border-radius: var(--border-radius);
+            margin: 0;
+            color: var(--main-text);
+            box-shadow: 0rem 0rem 0.3rem var(--main-border-shadow);
+        }
+        .footer{
+            margin-top: 4%;
+            background: black;
+            height: 4rem;
+            font-size: 1rem !important;
+            display: flex;
+        }
+</style>
+<script>
+    $('.like-btn').on('click', function() {
+   $(this).toggleClass('is-active');
+});
+
+$('.minus-btn').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $input = $this.closest('div').find('input');
+    var value = parseInt($input.val());
+ 
+    if (value &amp;amp;gt; 1) {
+        value = value - 1;
+    }
+    else {
+        value = 0;
+    }
+ 
+  $input.val(value);
+ 
+});
+ 
+$('.plus-btn').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $input = $this.closest('div').find('input');
+    var value = parseInt($input.val());
+ 
+    if (value &amp;amp;lt; 100) {
+        value = value + 1;
+    } else {
+        value =100;
+    }
+ 
+    $input.val(value);
+});
+</script>
+<body>
+      <!-- book store navbar -->
+      <header id="container">
+        <div id="nav-bar">
+            <div id="nav-belt">
+                <div class="nav-left">
+                    <div id="nav-logo">
+                        <a href="index.html">The Book Spot</a>
+                    </div>
+                </div>
+                <div class="nav-fill">
+                    <div id="nav-search">
+                        <form id="nav-search-bar-form">
+                            <div class="nav-left">
+                                <a href="">ALL</a>
+                            </div>
+                            <div class="nav-fill">
+                                <input type="text">
+                            </div>
+                            <div class="nav-right">
+                                <button type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <div id="nav-tools">
+                        <a href="login.html">Saurav</a>
+                        <a href="index.html">My Order</a>
+                        <a href="bookscatalogshoppingcart.html">Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="shopping-cart">
+        <!-- Title -->
+        <div class="title">
+          Shopping Books
+        </div>
+       
+        <!-- Product #1 -->
+        <div class="item">
+          <div class="buttons">
+            <span class="delete-btn"></span>
+            <span class="like-btn"></span>
+          </div>
+       
+          <div class="image">
+            <img src="images/book-cart1.jpg" alt="" />
+          </div>
+       
+          <div class="description">
+            <span>Common Projects</span>
+            <span>Bball High</span>
+            <span>White</span>
+          </div>
+       
+          <div class="quantity">
+            <button class="plus-btn" type="button" name="button">
+              <img src="plus.svg" alt="" />
+            </button>
+            <input type="text" name="name" value="1">
+            <button class="minus-btn" type="button" name="button">
+              <img src="minus.svg" alt="" />
+            </button>
+          </div>
+       
+          <div class="total-price">&#8377 549</div>
+        </div>
+       
+        <!-- Product #2 -->
+        <div class="item">
+          <div class="buttons">
+            <span class="delete-btn"></span>
+            <span class="like-btn"></span>
+          </div>
+       
+          <div class="image">
+            <img src="images/book-cart2.jpg" alt=""/>
+          </div>
+       
+          <div class="description">
+            <span>Maison Margiela</span>
+            <span>Future Sneakers</span>
+            <span>White</span>
+          </div>
+       
+          <div class="quantity">
+            <button class="plus-btn" type="button" name="button">
+              <img src="plus.svg" alt="" />
+            </button>
+            <input type="text" name="name" value="1">
+            <button class="minus-btn" type="button" name="button">
+              <img src="minus.svg" alt="" />
+            </button>
+          </div>
+       
+          <div class="total-price">&#8377 870</div>
+        </div>
+       
+        <!-- Product #3 -->
+        <div class="item">
+          <div class="buttons">
+            <span class="delete-btn"></span>
+            <span class="like-btn"></span>
+          </div>
+       
+          <div class="image">
+            <img src="images/book-cart3.jpg" alt="" />
+          </div>
+       
+          <div class="description">
+            <span>Our Legacy</span>
+            <span>Brushed Scarf</span>
+            <span>Brown</span>
+          </div>
+       
+          <div class="quantity">
+            <button class="plus-btn" type="button" name="button">
+              <img src="plus.svg" alt="" />
+            </button>
+            <input type="text" name="name" value="1">
+            <button class="minus-btn" type="button" name="button">
+              <img src="minus.svg" alt="" />
+            </button>
+          </div>
+       
+          <div class="total-price">&#8377 349</div>
+        </div>
+      </div>
+</body>
+</html>

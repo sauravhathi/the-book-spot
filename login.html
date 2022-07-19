@@ -1,0 +1,73 @@
+<!-- login page transparent box- -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page transparent box</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+
+</head>
+<style>
+    form-control {
+        width: 60% !important;
+    }
+
+    @media (min-width: 601px) {
+
+        .w3-col.m8,
+        .w3-twothird {
+            width: 66.66666%;
+            margin-left: 17%;
+        }
+    }
+</style>
+
+<body>
+    <!-- login page and Sign Up center-->
+    <div class="w3-content w3-padding" style="max-width:1564px">
+        <div class="w3-col-padding w3-padding-64 w3-container">
+            <div class="w3-content">
+
+                <div class="w3-twothird">
+                    <h1>User Login</h1>
+                    <form action="userprofile.html" method="post">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Enter email" name="email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                placeholder="Password" name="password">
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+                        </div>
+                        <!-- forgotPassword -->
+                        <a href="forgotPassword.html">Forgot Password?</a>
+                        <br>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <a href="login.html"></a><button type="submit" class="btn btn-primary">Register</button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
